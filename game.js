@@ -1,29 +1,48 @@
-const canvas = wx.createCanvas(); //创建画布
-const width = canvas.width;
-const height = canvas.height;
-const food = wx.createImage()//创建图像
-const dog = wx.createImage()//创建图像
-food.src = './images/food1.png'
-dog.src = './images/dog.png'
-let dogLoad = false
-const ctx = canvas.getContext('2d'); //创建一个2d context（画笔）
+import myImage from './utils/myImage'
+const canvas = wx.createCanvas()//创建画布
+const ctx = canvas.getContext('2d')//创建一个2d 画笔
 const { windowWidth, windowHeight } = wx.getSystemInfoSync()
-function drawFood(x, y) {
-  ctx.clearRect(0, 0, windowWidth, windowHeight)//清除整个画布
-  ctx.drawImage(food, x, y)
-}//绘制一个区域用于放置食物图像,图像尺寸为60x60
-let X = width / 2 - 30
-let Y = 0
-let ImgX = width / 2 - 30;
-let ImgY = 450
-
-function render() {
-  drawFood(X, Y++)
-  ctx.drawImage(dog,ImgX, ImgY)//绘制一个区域用于放置狗狗图像，图像尺寸为60x60
-  requestAnimationFrame(render)//自动重绘
+const bg = myImage('bg')
+const dog = myImage('dog')
+const food = myImage('food1')
+let dX = windowWidth / 2 - 50;
+let dY = windowHeight - 100;
+let fX = windowWidth / 2 - 50;
+let fY = 0;
+function renderEach(x, y, x1, y1) {
+    ctx.clearRect(0, 0, windowWidth, windowHeight)//清除整个画布
+    ctx.drawImage(bg, 0, 0, windowWidth, windowHeight)//背景图
+    ctx.drawImage(dog, x, y)//狗狗
+    ctx.drawImage(food, x1, y1)//食物
 }
-dog.onload = function () {
-  dogLoad = true
-  render()
-}//狗狗图片加载完成后绘制页面
+function render() {
+    renderEach(dX, dY, fX, fY++)
+    const stop = requestAnimationFrame(render)//自动重绘;
+    if (fX + 20 <= dX && fY + 20 <= dY) {
+        wx.showModal({
+            title: '游戏结束',
+            content: '是否再来一局？',
+            cancelText: '不',
+            confirmText: '好的',
+            success: (res) => {
+                if (res.confirm) {
+                    dX = windowWidth / 2 - 50;
+                    dY = windowHeight - 100;
+                    fX = windowWidth / 2 - 50;
+                    fY = 0;
+                    requestAnimationFrame(render)//自动重绘;
+                } else if (res.cancel) {
+                    cancelAnimationFrame(stop)
+                }
+            }
+        })
+    }
+}
 
+bg.onload = () => {
+    render()
+}
+wx.onTouchMove((res) => {
+    dX = res.changedTouches[0].clientX
+    dY = res.changedTouches[0].clientY
+})//狗狗跟随触摸点移动

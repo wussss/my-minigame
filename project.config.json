@@ -32,7 +32,7 @@
     "packNpmRelationList": []
   },
   "compileType": "game",
-  "libVersion": "1.9.94",
+  "libVersion": "2.13.2",
   "appid": "wx1a1879eb612b61cf",
   "projectname": "my-minigame",
   "simulatorType": "wechat",
