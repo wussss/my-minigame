@@ -25,25 +25,25 @@
       "disablePlugins": [],
       "outputPath": ""
     },
+    "enableEngineNative": false,
     "useIsolateContext": true,
     "useCompilerModule": true,
     "userConfirmedUseCompilerModuleSwitch": false,
     "packNpmManually": false,
-    "packNpmRelationList": []
+    "packNpmRelationList": [],
+    "minifyWXSS": true
   },
   "compileType": "game",
   "libVersion": "2.13.2",
-  "appid": "wx1a1879eb612b61cf",
+  "appid": "wxc45e955c8e714cfb",
   "projectname": "my-minigame",
   "simulatorType": "wechat",
   "simulatorPluginLibVersion": {},
   "condition": {
     "search": {
-      "current": -1,
       "list": []
     },
     "conversation": {
-      "current": -1,
       "list": []
     },
     "game": {
@@ -51,7 +51,6 @@
       "list": []
     },
     "miniprogram": {
-      "current": -1,
       "list": []
     }
   }
