@@ -17,26 +17,7 @@ function renderEach(x, y, x1, y1) {
 }
 function render() {
     renderEach(dX, dY, fX, fY++)
-    const stop = requestAnimationFrame(render)//自动重绘;
-    if (fX + 20 <= dX && fY + 20 <= dY) {
-        wx.showModal({
-            title: '游戏结束',
-            content: '是否再来一局？',
-            cancelText: '不',
-            confirmText: '好的',
-            success: (res) => {
-                if (res.confirm) {
-                    dX = windowWidth / 2 - 50;
-                    dY = windowHeight - 100;
-                    fX = windowWidth / 2 - 50;
-                    fY = 0;
-                    requestAnimationFrame(render)//自动重绘;
-                } else if (res.cancel) {
-                    cancelAnimationFrame(stop)
-                }
-            }
-        })
-    }
+    requestAnimationFrame(render)//自动重绘
 }
 
 bg.onload = () => {
