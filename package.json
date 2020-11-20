@@ -4,7 +4,7 @@
   "description": "> 一个简单的demo. [微信官方文档](https://developers.weixin.qq.com/minigame/dev/guide/ \"参考\")",
   "main": "game.js",
   "scripts": {
-    "build": "tsc compile game.ts",
+    "build": "rm -rf game.js && tsc compile game.ts",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
