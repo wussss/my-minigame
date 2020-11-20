@@ -203,7 +203,8 @@ var AutoMovedEntity = /** @class */ (function (_super) {
     };
     AutoMovedEntity.prototype.match = function (target) {
         var x = target.x, y = target.y, width = target.width, height = target.height;
-        if (Math.abs(this.feature.x - x) < 5 && Math.abs(this.feature.y - y) < 20) {
+        if (Math.abs(this.feature.x - x) < 20 &&
+            Math.abs(this.feature.y - y) < 20) {
             this.hit();
             var food1 = getData().food1;
             this.feature = __assign(__assign({}, this.feature), food1);

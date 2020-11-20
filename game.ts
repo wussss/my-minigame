@@ -140,7 +140,10 @@ class AutoMovedEntity extends MovedEntity {
 
   match(target: Point & Shape) {
     const { x, y, width, height } = target;
-    if (Math.abs(this.feature.x - x) < 5 && Math.abs(this.feature.y - y) < 20) {
+    if (
+      Math.abs(this.feature.x - x) < 20 &&
+      Math.abs(this.feature.y - y) < 20
+    ) {
       this.hit();
       const { food1 } = getData();
       this.feature = { ...this.feature, ...food1 };
