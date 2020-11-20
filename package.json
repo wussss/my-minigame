@@ -1,0 +1,20 @@
+{
+  "name": "my-minigame",
+  "version": "1.0.0",
+  "description": "> 一个简单的demo. [微信官方文档](https://developers.weixin.qq.com/minigame/dev/guide/ \"参考\")",
+  "main": "game.js",
+  "scripts": {
+    "build": "rm -rf game.js && tsc compile game.ts",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/anthhub/my-minigame.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/anthhub/my-minigame/issues"
+  },
+  "homepage": "https://github.com/anthhub/my-minigame#readme"
+}
